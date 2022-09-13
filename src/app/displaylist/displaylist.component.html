@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <th>SR.No</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Education</th>
+        <th>Action</th>
+    </thead>
+    <tbody *ngFor="let item of addmissionformDetails;index as i">
+        <td><tr>{{i+1}}</tr></td>
+        <td><tr>{{item.FirstName +' '+ item.LastName}}</tr></td>
+        <td><tr>{{item.Gender}}</tr></td>
+        <td><tr>{{item.Education.Degree}}</tr></td>
+        <td><tr (click)="EditFormDetails(i)">Edit</tr></td>
+        <td><tr (click)="DeleteFormDetails()">Delete</tr></td>
+
+    </tbody>
+</table>

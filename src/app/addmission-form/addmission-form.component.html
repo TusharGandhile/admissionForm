@@ -1,0 +1,72 @@
+<h3>Admission Form</h3>
+<form [formGroup]="addmissionForm">
+    <div class="container">
+       
+            <label for="FirstName">FirstName</label>
+            <input type="text" class="form-control" formControlName="FirstName">
+      
+     
+            <label for="LastName">LastName</label>
+            <input type="text" class="form-control" formControlName="LastName">
+      
+            <label for="Address">Address</label>
+            <textarea formControlName="Address" id="" cols="30" rows="3" class="form-control"></textarea>
+       
+            <label for="MaritalStatus">MaritalStatus</label>
+            <select formControlName="MaritalStatus" id="" class="form-control">
+                <option value="">Choose..</option>
+                <option>Single</option>
+                <option>Married</option>
+            </select>
+       
+            <label for="Gender">Gender</label><br>
+            <input type="radio" value="male" formControlName="Gender" class="form-control">
+            <label for="male">Male</label>
+            <input type="radio" value="female" formControlName="Gender" class="form-control">
+            <label for="female">Female</label>
+        
+            <label for="skills">Skills</label>
+            <div *ngFor="let skill of MySkills;index as i">
+                <input type="checkbox"  formArrayName="skills" class="form-control" (change)="OnChangeCkeckBox($event,i)" value={{skill}}>
+                <label for="">{{skill}}</label>
+            </div>
+       </div>
+       <h4 (click)="addEducation()">Add Your Education</h4>
+       
+       <div class="formarr" formArrayName="Education">
+       <div *ngFor="let edu of edu?.controls;index as k">
+           <p>{{k+1}}</p>
+           <div class="form-group" [formGroupName]="k">
+            <div>
+                <label for="degree">Degree</label>
+                <input type="text" formControlName="Degree" >
+            </div>
+            <div>
+                <label for="percentage">Percentage</label>
+                <input type="text"formControlName="Percentage">
+            </div>
+            <div>
+                <label for="specialization">Specialization</label>
+                <input type="radio" value="Art" formControlName="specialization">
+                <label for="art">Art</label>
+                <input type="radio" value="Commerce" formControlName="specialization">
+                <label for="commerce">Commerce</label>
+                <input type="radio" value="Science" formControlName="specialization">
+                <label for="Science">Science</label>
+            </div>
+            <div>
+            <label for="skills">Subjects</label>
+            <div *ngFor="let subject of Subjects;index as j">
+                <input type="checkbox"  formArrayName="subjects" class="form-control" (change)="OnChangeSubject($event,k,j)" value={{subject}}>
+                <label for="">{{subject}}</label>
+            </div>
+             </div>
+           </div>
+        </div>
+    </div>
+    <div class="footer">
+        <button class="btn-primary"  (click)="SubmitForm()">Submit Form</button>
+        <button class="btn-primary"  routerLink="displayList">Display List</button>
+       
+    </div>
+</form>
